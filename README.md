@@ -1,54 +1,41 @@
-# React + TypeScript + Vite
+# 🔍 GitHub User Analyzer
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+GitHub User Analyzer is a modern web application that allows users to analyze public GitHub profiles by simply entering a GitHub username. The app fetches and visualizes useful insights such as repositories, contribution activity, and commit history.
 
-Currently, two official plugins are available:
+![GitHub License](https://img.shields.io/github/license/your-username/github-user-analyzer)
+![GitHub Stars](https://img.shields.io/github/stars/your-username/github-user-analyzer?style=social)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- 🔎 Search and analyze any public GitHub user
+- 📊 Display of repositories, stars, forks, languages, and contribution activity
+- 📈 Commits chart visualizing daily or weekly activity
+- ⚡ Built with modern web stack (React + TypeScript + ShadCN UI)
+- 🎨 Responsive and accessible design
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🖼️ Demo
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+[Live Demo](https://your-deployment-url.com)  
+*(replace with actual link)*
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🧰 Tech Stack
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Frontend**: React, TypeScript, Vite
+- **UI Framework**: ShadCN UI, Tailwind CSS
+- **Charting**: Recharts or Chart.js
+- **API**: GitHub REST API v3
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 📦 Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/github-user-analyzer.git
+
+# Navigate into the project
+cd github-user-analyzer
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm run dev
