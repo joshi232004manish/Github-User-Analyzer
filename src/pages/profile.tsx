@@ -22,11 +22,14 @@ interface GitHubUser1 {
   public_repos: number;
   followers: number;
   following: number;
+  created_at: string;
 }
 
 export default function GitHubProfileCard() {
   const { user } = useDialogContext();
-  const [repos, setRepos] = useState([]);
+  const [repos, setRepos] = useState<
+    { id: number; name: string; description: string; language: string; stargazers_count: number; forks_count: number; size: number }[]
+  >([]);
   const [stats, setStats] = useState<GitHubUser | null>(null);
   const [userData, setUserData] = useState<GitHubUser1 | null>(null);
   const [rateLimit, setRateLimit] = useState<{
@@ -57,7 +60,7 @@ export default function GitHubProfileCard() {
     };
 
     fetchData();
-  }, [username]);
+  }, [username, Navigate]);
 
   const joinedDate = userData
     ? new Date(userData.created_at).toLocaleDateString(undefined, {
@@ -74,7 +77,7 @@ export default function GitHubProfileCard() {
           `https://api.github.com/users/${username}/repos?per_page=100`
         );
         const sorted = data.sort(
-          (a, b) => b.stargazers_count - a.stargazers_count
+          (a: { stargazers_count: number }, b: { stargazers_count: number }) => b.stargazers_count - a.stargazers_count
         );
         setRepos(sorted);
       } catch (err) {
@@ -106,7 +109,7 @@ export default function GitHubProfileCard() {
     fetchStats();
   }, [username]);
 
-  const languageColor = (lang) => {
+  const languageColor = (lang: string) => {
     switch (lang) {
       case "JavaScript":
         return "bg-yellow-400";
@@ -133,14 +136,14 @@ export default function GitHubProfileCard() {
         </div>
 
         <Avatar className="w-20 h-20 sm:w-24 sm:h-24 border-4 border-blue-600">
-          <AvatarImage src={userData.avatar_url} alt="Profile" />
+          <AvatarImage src={stats.avatar_url} alt="Profile" />
           <AvatarFallback>
-            {userData.login.slice(0, 2).toUpperCase()}
+            {stats.login.slice(0, 2).toUpperCase()}
           </AvatarFallback>
         </Avatar>
 
         <h1 className="text-xl sm:text-2xl font-bold mt-3 text-blue-400">
-          @{userData.login}
+          @{stats.login}
         </h1>
 
         <div className="flex items-center text-zinc-200 mt-2 text-sm sm:text-base">

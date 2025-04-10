@@ -1,7 +1,6 @@
 import { Input } from "@/components/ui/input";
 import { GithubIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
 import { useDialogContext } from "@/store/userContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -9,7 +8,7 @@ import { Button } from "@/components/ui/button";
 export default function OctoProfileSearch() {
   const navigate = useNavigate();
   const { user, setUser } = useDialogContext();
-  const handleSumbit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSumbit = (e: React.FormEvent) => {
     e.preventDefault();
 
     navigate("/profile");
@@ -34,7 +33,7 @@ export default function OctoProfileSearch() {
             "bg-zinc-800 text-white placeholder:text-zinc-400 border border-zinc-700 focus:ring-blue-500 focus:border-blue-500 rounded-md"
           )}
         />
-        <Button onClick={handleSumbit} className="bg-blue-700">Click Me</Button>
+        <Button  onClick={handleSumbit} className="bg-blue-700">Click Me</Button>
       </div>
     </div>
   );
